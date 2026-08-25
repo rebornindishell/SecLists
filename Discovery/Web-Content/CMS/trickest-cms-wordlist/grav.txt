@@ -139,6 +139,7 @@ system/src/Grav/Common/Grav.php
 system/src/Grav/Common/Themes.php
 system/src/Grav/Common/Twig/Extension/FilesystemExtension.php
 system/src/Grav/Common/Twig/Extension/GravExtension.php
+system/src/Grav/Common/Twig/Sandbox/SandboxDefaults.php
 system/src/Grav/Common/Twig/Sandbox/GravSourcePolicy.php
 system/src/Grav/Common/Twig/Sandbox/GravSecurityPolicy.php
 system/src/Grav/Common/Twig/Sandbox/SandboxConfig.php
@@ -631,6 +632,7 @@ system/src/Grav/Framework/Uri/UriFactory.php
 system/src/Grav/Installer/InstallException.php
 system/src/Grav/Installer/Versions.php
 system/src/Grav/Installer/YamlUpdater.php
+system/src/Grav/Installer/updates/1.8.0_2026-08-13_0.php
 system/src/Grav/Installer/updates/1.8.0_2026-06-15_0.php
 system/src/Grav/Installer/updates/1.7.0_2020-11-20_1.php
 system/src/Grav/Installer/updates/1.8.0_2026-07-03_0.php
@@ -640,6 +642,7 @@ system/src/Grav/Installer/updates/1.8.0_2026-06-30_0.php
 system/src/Grav/Installer/updates/1.8.0_2026-06-30_1.php
 system/src/Grav/Installer/updates/1.8.0_2026-06-26_0.php
 system/src/Grav/Installer/updates/1.8.0_2026-04-15_0.php
+system/src/Grav/Installer/updates/1.8.0_2026-08-12_0.php
 system/src/Grav/Installer/VersionUpdate.php
 system/src/Grav/Installer/VersionUpdater.php
 system/src/Grav/Installer/Install.php
@@ -656,6 +659,7 @@ system/src/Doctrine/Common/Cache/CacheProvider.php
 system/assets/debugger/clockwork.js
 system/assets/jquery/jquery-3.x.min.js
 system/assets/jquery/jquery-2.x.min.js
+user/.htaccess
 user/data/.htaccess
 user/data/.gitkeep
 user/accounts/.htaccess
@@ -679,11 +683,16 @@ tests/_support/UnitTester.php
 tests/_support/FunctionalTester.php
 tests/_support/AcceptanceTester.php
 tests/unit/data/blueprints/strict.yaml
+tests/unit/data/assets/timestamp-a.js
 tests/unit/_bootstrap.php
 tests/unit/Grav/Common/Twig/Sandbox/SandboxConfigTest.php
 tests/unit/Grav/Common/Twig/Compatibility/Twig3CompatibilityTransformerTest.php
+tests/unit/Grav/Common/Twig/TwigConditionalBlockTest.php
 tests/unit/Grav/Common/Twig/DeferredExtensionTest.php
 tests/unit/Grav/Common/Twig/Extensions/GravExtensionTest.php
+tests/unit/Grav/Common/Twig/TwigAutoescapeCompatTest.php
+tests/unit/Grav/Common/Twig/TwigSetEscaperCompatTest.php
+tests/unit/Grav/Common/Twig/TwigForkPatchesTest.php
 tests/unit/Grav/Common/InflectorTest.php
 tests/unit/Grav/Common/UriTest.php
 tests/unit/Grav/Common/Markdown/ElementBuilderTest.php
@@ -700,8 +709,10 @@ tests/unit/Grav/Common/Security/AdminSecurityTest.php
 tests/unit/Grav/Common/Security/FilePathSecurityTest.php
 tests/unit/Grav/Common/Security/MediaAttributeSecurityTest.php
 tests/unit/Grav/Common/Security/DynamicDataCallGuardTest.php
+tests/unit/Grav/Common/Security/ModularTwigContentGuardTest.php
 tests/unit/Grav/Common/Security/MediaStyleSecurityTest.php
 tests/unit/Grav/Common/Security/MediaResizeSecurityTest.php
+tests/unit/Grav/Common/Security/SandboxDefaultsMergeTest.php
 tests/unit/Grav/Common/Security/NonceKeySecurityTest.php
 tests/unit/Grav/Common/Security/ZipSlipSecurityTest.php
 tests/unit/Grav/Common/Security/SvgXxeSecurityTest.php
@@ -715,6 +726,7 @@ tests/unit/Grav/Common/Security/UnserializeIntegritySecurityTest.php
 tests/unit/Grav/Common/Security/TwigContentXssOutputTest.php
 tests/unit/Grav/Common/Security/MediaActionAllowlistTest.php
 tests/unit/Grav/Common/Security/TwigContentDiagnosticsTest.php
+tests/unit/Grav/Common/Security/BlueprintExtendsProvenanceTest.php
 tests/unit/Grav/Common/BrowserTest.php
 tests/unit/Grav/Common/Data/GroupBlueprintSecurityTest.php
 tests/unit/Grav/Common/Data/BlueprintTest.php
@@ -724,8 +736,10 @@ tests/unit/Grav/Common/Helpers/FileReaderTest.php
 tests/unit/Grav/Common/Helpers/ExcerptsTest.php
 tests/unit/Grav/Common/Page/PagesTest.php
 tests/unit/Grav/Common/Page/Medium/ImageMediumUrlTest.php
+tests/unit/Grav/Common/Page/Medium/MediaPlayerAttributesTest.php
 tests/unit/Grav/Common/Page/Medium/MediaMetadataQueryTest.php
 tests/unit/Grav/Common/Page/PageOrderingTest.php
+tests/unit/Grav/Common/Page/PageUrlCanonicalTest.php
 tests/unit/Grav/Common/UtilsTest.php
 tests/unit/Grav/Common/GPM/UpgraderFamilyTest.php
 tests/unit/Grav/Common/GPM/GPMTest.php

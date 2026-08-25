@@ -10,7 +10,6 @@ package.json
 .coderabbit.yml
 sponsors.md
 yarn.lock
-transaction-deletion-import-logic-summary.md
 README.md
 .mergify.yml
 sider.yml
@@ -609,7 +608,6 @@ erpnext/accounts/doctype/account/chart_of_accounts/unverified/de_l10n_de_chart_t
 erpnext/accounts/doctype/account/chart_of_accounts/unverified/it_l10n_it_chart_template_generic.json
 erpnext/accounts/doctype/account/chart_of_accounts/unverified/cr_account_chart_template_x.json
 erpnext/accounts/doctype/account/chart_of_accounts/unverified/pl_pl_chart_template.json
-erpnext/accounts/doctype/account/chart_of_accounts/unverified/be_l10nbe_chart_template.json
 erpnext/accounts/doctype/account/chart_of_accounts/unverified/uy_uy_chart_template.json
 erpnext/accounts/doctype/account/chart_of_accounts/unverified/ch_l10nch_chart_template.json
 erpnext/accounts/doctype/account/chart_of_accounts/unverified/cn_l10n_chart_china.json
@@ -651,6 +649,7 @@ erpnext/accounts/doctype/account/chart_of_accounts/verified/tw_chart_of_accounts
 erpnext/accounts/doctype/account/chart_of_accounts/verified/ar_chart_of_accounts.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/cg_plan_comptable.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/bj_plan_comptable_avec_code.json
+erpnext/accounts/doctype/account/chart_of_accounts/verified/be_minimum_genormaliseerd_rekeningstelsel_verenigingen_stichtingen.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/fr_plan_comptable_general_avec_code.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/cf_plan_comptable.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/gq_plan_comptable_avec_code.json
@@ -664,6 +663,7 @@ erpnext/accounts/doctype/account/chart_of_accounts/verified/syscohada_plan_compt
 erpnext/accounts/doctype/account/chart_of_accounts/verified/mx_plan_de_cuentas.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/co_plan_unico_de_cuentas_simple.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/bf_plan_comptable.json
+erpnext/accounts/doctype/account/chart_of_accounts/verified/be_minimum_genormaliseerd_rekeningstelsel_ondernemingen.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/km_plan_comptable_avec_code.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/sg_default_coa.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/ga_plan_comptable.json
@@ -671,12 +671,14 @@ erpnext/accounts/doctype/account/chart_of_accounts/verified/tg_plan_comptable_av
 erpnext/accounts/doctype/account/chart_of_accounts/verified/el_salvador_standard.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/de_kontenplan_SKR04.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/bf_plan_comptable_avec_code.json
+erpnext/accounts/doctype/account/chart_of_accounts/verified/be_plan_comptable_minimum_normalise_associations_fondations.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/cd_plan_comptable.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/ca_plan_comptable_pour_les_provinces_francophones.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/gw_plan_comptable_avec_code.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/ni_catalogo_de_cuentas.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/syscohada_chart_of_accounts.py
 erpnext/accounts/doctype/account/chart_of_accounts/verified/sg_fnb_coa.json
+erpnext/accounts/doctype/account/chart_of_accounts/verified/be_plan_comptable_minimum_normalise_entreprises.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/gw_plan_comptable.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/fr_plan_comptable_associatif_avec_code.json
 erpnext/accounts/doctype/account/chart_of_accounts/verified/in_standard_chart_of_accounts.json
@@ -2494,6 +2496,7 @@ erpnext/patches/v16_0/set_reporting_currency.py
 erpnext/patches/v16_0/migrate_address_contact_custom_fields.py
 erpnext/patches/v16_0/rename_subcontracted_quantity.py
 erpnext/patches/v16_0/update_account_categories_for_existing_accounts.py
+erpnext/patches/v16_0/repair_work_order_material_transfer.py
 erpnext/patches/v16_0/add_new_stock_entry_types.py
 erpnext/patches/v16_0/fix_subcontracting_titles.py
 erpnext/patches/v16_0/__init__.py
@@ -2506,6 +2509,7 @@ erpnext/patches/v16_0/uom_category.py
 erpnext/patches/v16_0/migrate_budget_records_to_new_structure.py
 erpnext/patches/v16_0/enable_serial_batch_setting.py
 erpnext/patches/v16_0/set_default_letter_head_for_doctype_and_report.py
+erpnext/patches/v16_0/recalculate_mixed_purchase_receipt_billing_status.py
 erpnext/patches/v16_0/migrate_subscription_generate_invoice_at.py
 erpnext/patches/v16_0/set_post_change_gl_entries_on_pos_settings.py
 erpnext/patches/v16_0/complete_onboarding_steps_for_older_sites.py
@@ -2539,7 +2543,9 @@ erpnext/patches/v16_0/rename_ar_ap_ageing_filter.py
 erpnext/patches/v16_0/make_workstation_operating_components.py
 erpnext/patches/v16_0/submit_existing_product_bundles.py
 erpnext/patches/v16_0/update_currency_exchange_settings_for_frankfurter.py
+erpnext/patches/v16_0/remove_frappe_crm_custom_fields.py
 erpnext/patches/v16_0/fix_barcode_typo.py
+erpnext/patches/v16_0/recalculate_purchase_receipt_billing_status.py
 erpnext/patches/v16_0/migrate_asset_type_checkboxes_to_select.py
 erpnext/patches/v16_0/update_requested_qty_packed_item.py
 erpnext/patches/v16_0/convert_commission_rate_to_percent.py
@@ -2661,6 +2667,7 @@ erpnext/locale/id.po
 erpnext/locale/my.po
 erpnext/locale/ru.po
 erpnext/locale/hu.po
+erpnext/locale/km.po
 erpnext/locale/fa.po
 erpnext/locale/vi.po
 erpnext/locale/nb.po
@@ -3130,6 +3137,10 @@ erpnext/manufacturing/doctype/production_plan_item/production_plan_item.json
 erpnext/manufacturing/doctype/production_plan_item/production_plan_item.py
 erpnext/manufacturing/doctype/production_plan_item/__init__.py
 erpnext/manufacturing/doctype/production_plan_item/README.md
+erpnext/manufacturing/doctype/production_plan_schedule/production_plan_schedule_calendar.js
+erpnext/manufacturing/doctype/production_plan_schedule/__init__.py
+erpnext/manufacturing/doctype/production_plan_schedule/production_plan_schedule.json
+erpnext/manufacturing/doctype/production_plan_schedule/production_plan_schedule.py
 erpnext/manufacturing/doctype/bom_update_batch/__init__.py
 erpnext/manufacturing/doctype/bom_update_batch/bom_update_batch.py
 erpnext/manufacturing/doctype/bom_update_batch/bom_update_batch.json
@@ -3228,6 +3239,7 @@ erpnext/manufacturing/doctype/work_order/README.md
 erpnext/manufacturing/doctype/work_order/work_order.js
 erpnext/manufacturing/doctype/work_order/work_order_preview.html
 erpnext/manufacturing/doctype/work_order/test_work_order.py
+erpnext/manufacturing/doctype/work_order/services/material_coverage.py
 erpnext/manufacturing/doctype/work_order/services/__init__.py
 erpnext/manufacturing/doctype/work_order/services/status.py
 erpnext/manufacturing/doctype/work_order/services/required_items.py
@@ -3357,6 +3369,14 @@ erpnext/manufacturing/doctype_settings_map/bom.json
 erpnext/manufacturing/doctype_settings_map/production_plan.json
 erpnext/manufacturing/doctype_settings_map/blanket_order.json
 erpnext/manufacturing/doctype_settings_map/work_order.json
+erpnext/manufacturing/scheduling/__init__.py
+erpnext/manufacturing/scheduling/test_scheduling_engine.py
+erpnext/manufacturing/scheduling/test_plan_adapter.py
+erpnext/manufacturing/scheduling/engine.py
+erpnext/manufacturing/scheduling/DESIGN.md
+erpnext/manufacturing/scheduling/loaders.py
+erpnext/manufacturing/scheduling/plan_adapter.py
+erpnext/manufacturing/scheduling/models.py
 erpnext/manufacturing/dashboard_fixtures.py
 erpnext/manufacturing/README.md
 erpnext/manufacturing/report/process_loss_report/process_loss_report.py
@@ -4161,7 +4181,6 @@ erpnext/crm/doctype/appointment_booking_slots/appointment_booking_slots.py
 erpnext/crm/doctype/opportunity_lost_reason_detail/__init__.py
 erpnext/crm/doctype/opportunity_lost_reason_detail/opportunity_lost_reason_detail.json
 erpnext/crm/doctype/opportunity_lost_reason_detail/opportunity_lost_reason_detail.py
-erpnext/crm/doctype/test_utils.py
 erpnext/crm/doctype/prospect_lead/prospect_lead.py
 erpnext/crm/doctype/prospect_lead/__init__.py
 erpnext/crm/doctype/prospect_lead/prospect_lead.json
@@ -4541,7 +4560,6 @@ erpnext/stock/doctype/item/test_item.py
 erpnext/stock/doctype/item/item_dashboard.py
 erpnext/stock/doctype/item/item.json
 erpnext/stock/doctype/item/item.js
-erpnext/stock/doctype/item/item_prices.html
 erpnext/stock/doctype/item/item_list.js
 erpnext/stock/doctype/__init__.py
 erpnext/stock/doctype/sales_bom_item/README.md

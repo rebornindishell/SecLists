@@ -757,6 +757,7 @@ test/org/apache/catalina/startup/TestPropertySources.java
 test/org/apache/catalina/startup/web-2lifecyclecallback.xml
 test/org/apache/catalina/startup/TestStartupIPv6Connectors.java
 test/org/apache/catalina/startup/NoMappingParamServlet.java
+test/org/apache/catalina/startup/TestWithoutClustering.java
 test/org/apache/catalina/startup/TestHostConfigAutomaticDeploymentDirXml.java
 test/org/apache/catalina/startup/DuplicateMappingParamServlet.java
 test/org/apache/catalina/startup/TestStrictServletComplianceAttributes.java
@@ -787,6 +788,7 @@ test/org/apache/catalina/ant/jmx/TestJMXAccessorTask.java
 test/org/apache/catalina/ha/context/TestReplicatedContext.java
 test/org/apache/catalina/ha/session/TestDeltaRequest.java
 test/org/apache/catalina/ha/session/TestDeltaSession.java
+test/org/apache/catalina/ha/session/TestDeltaManagerBatch.java
 test/org/apache/catalina/mbeans/TestRegistration.java
 test/org/apache/catalina/valves/rewrite/TestRewriteValve.java
 test/org/apache/catalina/valves/rewrite/TestResolverSSLComponents.java
@@ -986,6 +988,7 @@ test/org/apache/catalina/authenticator/TestSSOChangeSessionId.java
 test/org/apache/catalina/authenticator/TestAuthInfoResponseHeaders.java
 test/org/apache/catalina/authenticator/TestSSOnonLoginAndBasicAuthenticator.java
 test/org/apache/catalina/authenticator/TestDigestAuthenticatorB.java
+test/org/apache/catalina/authenticator/TestFormAuthenticatorD.java
 test/org/apache/catalina/authenticator/TestSSLAuthenticator.java
 test/org/apache/catalina/authenticator/TestFormAuthenticatorB.java
 test/org/apache/catalina/authenticator/TesterCallbackHandlerImpl.java
@@ -2921,7 +2924,6 @@ java/org/apache/tomcat/websocket/BackgroundProcess.java
 java/org/apache/tomcat/websocket/WsPongMessage.java
 java/org/apache/tomcat/websocket/PojoClassHolder.java
 java/org/apache/tomcat/websocket/WsRemoteEndpointBasic.java
-java/org/apache/tomcat/websocket/server/WsSessionListener.java
 java/org/apache/tomcat/websocket/server/package-info.java
 java/org/apache/tomcat/websocket/server/LocalStrings_zh_CN.properties
 java/org/apache/tomcat/websocket/server/WsContextListener.java
@@ -2939,6 +2941,7 @@ java/org/apache/tomcat/websocket/server/LocalStrings_es.properties
 java/org/apache/tomcat/websocket/server/LocalStrings_ko.properties
 java/org/apache/tomcat/websocket/server/WsRemoteEndpointImplServer.java
 java/org/apache/tomcat/websocket/server/UriTemplate.java
+java/org/apache/tomcat/websocket/server/WsHttpSessionBindingListener.java
 java/org/apache/tomcat/websocket/server/WsWriteTimeout.java
 java/org/apache/tomcat/websocket/server/LocalStrings_de.properties
 java/org/apache/tomcat/websocket/server/WsHttpUpgradeHandler.java
@@ -3165,6 +3168,7 @@ java/org/apache/catalina/util/StandardSessionIdGenerator.java
 java/org/apache/catalina/util/FastRateLimiter.java
 java/org/apache/catalina/util/LocalStrings_fr.properties
 java/org/apache/catalina/util/TomcatCSS.java
+java/org/apache/catalina/util/SessionComparators.java
 java/org/apache/catalina/util/LifecycleBase.java
 java/org/apache/catalina/util/ToStringUtil.java
 java/org/apache/catalina/util/LocalStrings.properties

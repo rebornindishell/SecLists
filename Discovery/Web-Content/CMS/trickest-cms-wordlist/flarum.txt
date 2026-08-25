@@ -821,6 +821,7 @@ extensions/tags/CHANGELOG.md
 extensions/tags/tests/integration/authorization/DiscussionPolicyTest.php
 extensions/tags/tests/integration/authorization/TagPolicyTest.php
 extensions/tags/tests/integration/authorization/GlobalPolicyTest.php
+extensions/tags/tests/integration/Utf8SlugDriverTest.php
 extensions/tags/tests/integration/api/posts/ListTest.php
 extensions/tags/tests/integration/api/discussions/PermissionScopeQueryCountTest.php
 extensions/tags/tests/integration/api/discussions/CreateTest.php
@@ -832,7 +833,9 @@ extensions/tags/tests/integration/api/tags/ListWithFulltextSearchTest.php
 extensions/tags/tests/integration/api/tags/CreateTest.php
 extensions/tags/tests/integration/api/tags/SchemaTest.php
 extensions/tags/tests/integration/api/tags/ListTest.php
+extensions/tags/tests/integration/api/tags/DefaultSortTest.php
 extensions/tags/tests/integration/GlobalPolicyTagCountsTest.php
+extensions/tags/tests/integration/content/TagDefaultSortTest.php
 extensions/tags/tests/integration/setup.php
 extensions/tags/tests/integration/visibility/DiscussionVisibilityTest.php
 extensions/tags/tests/integration/RetrievesRepresentativeTags.php
@@ -1101,6 +1104,8 @@ extensions/statistics/less/admin.less
 extensions/statistics/js/tsconfig.json
 extensions/statistics/js/package.json
 extensions/statistics/js/admin.ts
+extensions/statistics/js/tests/stubs/frappe-charts.ts
+extensions/statistics/js/tests/unit/admin/StatisticsWidget.test.ts
 extensions/statistics/js/dist/admin.js.map
 extensions/statistics/js/dist/admin.js
 extensions/statistics/js/dist-typings/extend.d.ts
@@ -1109,6 +1114,7 @@ extensions/statistics/js/dist-typings/components/StatisticsWidget.d.ts
 extensions/statistics/js/dist-typings/components/MiniStatisticsWidget.d.ts
 extensions/statistics/js/dist-typings/components/StatisticsWidgetDateSelectionModal.d.ts
 extensions/statistics/js/dist-typings/index.d.ts
+extensions/statistics/js/jest.config.cjs
 extensions/statistics/js/webpack.config.js
 extensions/statistics/js/src/admin/components/StatisticsWidgetDateSelectionModal.tsx
 extensions/statistics/js/src/admin/components/MiniStatisticsWidget.tsx
@@ -1834,6 +1840,8 @@ php-packages/phpstan/stubs/Illuminate/Contracts/Filesystem/Factory.stub
 php-packages/phpstan/stubs/Illuminate/Queue/ListenerOptions.stub
 php-packages/phpstan/larastan-extension.neon
 php-packages/phpstan/README.md
+php-packages/phpstan/tests/fixtures/conditional-model-cast/check.php
+php-packages/phpstan/tests/fixtures/conditional-model-cast/extend.php
 php-packages/phpstan/phpstan-baseline.neon
 php-packages/phpstan/extension.neon
 php-packages/phpstan/src/Relations/RelationProperty.php
@@ -1892,6 +1900,7 @@ framework/core/less/common/Table.less
 framework/core/less/common/AlertManager.less
 framework/core/less/common/Dropdown.less
 framework/core/less/common/mixins.less
+framework/core/less/common/UrlLink.less
 framework/core/less/common/Navigation.less
 framework/core/less/common/TextEditor.less
 framework/core/less/common/Form.less
@@ -2031,6 +2040,7 @@ framework/core/js/tests/integration/admin/components/PermissionsPage.test.ts
 framework/core/js/tests/integration/admin/components/AppearencePage.test.ts
 framework/core/js/tests/integration/admin/AssetsRevision.test.ts
 framework/core/js/tests/integration/admin/Application.test.ts
+framework/core/js/tests/integration/forum/components/ThemeSwitcher.test.ts
 framework/core/js/tests/integration/forum/components/Modals.test.ts
 framework/core/js/tests/integration/forum/components/DiscussionPage.test.ts
 framework/core/js/tests/integration/forum/components/GlobalSearch.test.ts
@@ -2054,6 +2064,7 @@ framework/core/js/tests/unit/common/helpers/textContrastClass.test.ts
 framework/core/js/tests/unit/common/helpers/listItems.test.ts
 framework/core/js/tests/unit/common/helpers/highlight.test.ts
 framework/core/js/tests/unit/common/Application.test.ts
+framework/core/js/tests/unit/forum/utils/labelDiscussionLinks.test.ts
 framework/core/js/tests/unit/forum/utils/slidable.test.ts
 framework/core/js/tests/unit/forum/states/DiscussionListState.test.ts
 framework/core/js/tests/unit/forum/states/PostStreamState.test.ts
@@ -2355,6 +2366,7 @@ framework/core/js/dist-typings/forum/components/UsersSearchSource.d.ts
 framework/core/js/dist-typings/forum/components/WelcomeHero.d.ts
 framework/core/js/dist-typings/forum/components/MinimalDiscussionListItem.d.ts
 framework/core/js/dist-typings/forum/components/EventPost.d.ts
+framework/core/js/dist-typings/forum/components/ThemeSwitcher.d.ts
 framework/core/js/dist-typings/forum/components/AbstractPost.d.ts
 framework/core/js/dist-typings/forum/components/DiscussionRenamedPost.d.ts
 framework/core/js/dist-typings/forum/components/Composer.d.ts
@@ -2403,6 +2415,8 @@ framework/core/js/dist-typings/forum/components/ComposerButton.d.ts
 framework/core/js/dist-typings/forum/utils/isSafariMobile.d.ts
 framework/core/js/dist-typings/forum/utils/History.d.ts
 framework/core/js/dist-typings/forum/utils/DiscussionControls.d.ts
+framework/core/js/dist-typings/forum/utils/labelDiscussionLinks.d.ts
+framework/core/js/dist-typings/forum/utils/routeInternalLinks.d.ts
 framework/core/js/dist-typings/forum/utils/PostControls.d.ts
 framework/core/js/dist-typings/forum/utils/Pane.d.ts
 framework/core/js/dist-typings/forum/utils/UserControls.d.ts
@@ -2643,6 +2657,7 @@ framework/core/js/src/forum/components/PostStreamScrubber.js
 framework/core/js/src/forum/components/PostStream.js
 framework/core/js/src/forum/components/GlobalSearch.tsx
 framework/core/js/src/forum/components/NewAccessTokenModal.tsx
+framework/core/js/src/forum/components/ThemeSwitcher.tsx
 framework/core/js/src/forum/components/NotificationList.js
 framework/core/js/src/forum/components/AccessTokensList.tsx
 framework/core/js/src/forum/components/DiscussionList.js
@@ -2716,9 +2731,11 @@ framework/core/js/src/forum/utils/DiscussionControls.js
 framework/core/js/src/forum/utils/Pane.js
 framework/core/js/src/forum/utils/UserControls.js
 framework/core/js/src/forum/utils/PostControls.js
+framework/core/js/src/forum/utils/labelDiscussionLinks.ts
 framework/core/js/src/forum/utils/isSafariMobile.ts
 framework/core/js/src/forum/utils/History.ts
 framework/core/js/src/forum/utils/slidable.js
+framework/core/js/src/forum/utils/routeInternalLinks.ts
 framework/core/js/src/forum/forum.ts
 framework/core/js/src/forum/index.ts
 framework/core/js/src/forum/states/DiscussionListState.ts
@@ -2772,6 +2789,7 @@ framework/core/tests/integration/queue/QueueCommandTest.php
 framework/core/tests/integration/queue/QueueScheduleTest.php
 framework/core/tests/integration/queue/QueuePauseTest.php
 framework/core/tests/integration/queue/QueueServiceProviderTest.php
+framework/core/tests/integration/queue/NotificationQueueRoutingTest.php
 framework/core/tests/integration/middleware/AssetsRevisionHeaderTest.php
 framework/core/tests/integration/middleware/ContentTypeOptionsTest.php
 framework/core/tests/integration/middleware/ReferrerPolicyTest.php
@@ -2793,12 +2811,15 @@ framework/core/tests/integration/api/settings/MailSettingsTest.php
 framework/core/tests/integration/api/settings/SetTest.php
 framework/core/tests/integration/api/settings/DeleteTest.php
 framework/core/tests/integration/api/discussions/ListWithIncludedPostsQueryCountTest.php
+framework/core/tests/integration/api/discussions/ListGroupsQueryCountTest.php
 framework/core/tests/integration/api/discussions/ShowTest.php
 framework/core/tests/integration/api/discussions/ListWithFulltextSearchTest.php
 framework/core/tests/integration/api/discussions/CreateTest.php
 framework/core/tests/integration/api/discussions/UpdateTest.php
 framework/core/tests/integration/api/discussions/ListTest.php
+framework/core/tests/integration/api/discussions/ListSortedByTitleTest.php
 framework/core/tests/integration/api/discussions/PostIdsVisibilityTest.php
+framework/core/tests/integration/api/discussions/ListPaginationStabilityTest.php
 framework/core/tests/integration/api/discussions/ShowGroupsQueryCountTest.php
 framework/core/tests/integration/api/discussions/PgsqlSearchConfigurationInjectionTest.php
 framework/core/tests/integration/api/discussions/DeletionTest.php
@@ -2828,6 +2849,7 @@ framework/core/tests/integration/api/users/ShowTest.php
 framework/core/tests/integration/api/users/PasswordEmailTokensTest.php
 framework/core/tests/integration/api/users/PasswordResetTokenAccumulationTest.php
 framework/core/tests/integration/api/users/CreateTest.php
+framework/core/tests/integration/api/users/PasswordTokenTypeJugglingTest.php
 framework/core/tests/integration/api/users/ShowGroupsRelationshipTest.php
 framework/core/tests/integration/api/users/UpdateTest.php
 framework/core/tests/integration/api/users/ListTest.php
@@ -2836,10 +2858,12 @@ framework/core/tests/integration/api/users/AvatarSrcsetTest.php
 framework/core/tests/integration/api/users/GroupSearchTest.php
 framework/core/tests/integration/api/users/SendPasswordResetEmailTest.php
 framework/core/tests/integration/api/users/DeleteTest.php
+framework/core/tests/integration/formatter/InternalLinksTest.php
 framework/core/tests/integration/mail/NotificationMarkdownInjectionTest.php
 framework/core/tests/integration/mail/AbandonedExtensionsEmailBodyTest.php
 framework/core/tests/integration/mail/EmailTitleLeakTest.php
 framework/core/tests/integration/setup.php
+framework/core/tests/integration/admin/SortMapsPayloadTest.php
 framework/core/tests/integration/admin/IndexTest.php
 framework/core/tests/integration/user/AvatarImageValidationTest.php
 framework/core/tests/integration/user/GroupPermissionCacheTest.php
@@ -2851,6 +2875,7 @@ framework/core/tests/integration/console/ScheduleRunTest.php
 framework/core/tests/integration/policy/DiscussionPolicyTest.php
 framework/core/tests/integration/policy/PostPolicyTest.php
 framework/core/tests/integration/database/AfterCommitListenerTest.php
+framework/core/tests/integration/database/DiscussionTitleIndexTest.php
 framework/core/tests/integration/database/AfterCommitTest.php
 framework/core/tests/integration/extenders/PolicyTest.php
 framework/core/tests/integration/extenders/FormatterTest.php
@@ -2908,12 +2933,14 @@ framework/core/tests/unit/Settings/DatabaseSettingsRepositoryTest.php
 framework/core/tests/unit/Settings/MemoryCacheSettingsRepositoryTest.php
 framework/core/tests/unit/Api/AvatarUrlIpFilterTest.php
 framework/core/tests/unit/Api/Middleware/AddAssetsRevisionHeaderTest.php
+framework/core/tests/unit/Extension/ExtensionManagerManifestTest.php
 framework/core/tests/unit/Extension/DefaultLanguagePackGuardTest.php
 framework/core/tests/unit/Extension/AbandonedExtensionsFetcherTest.php
 framework/core/tests/unit/Announcements/AnnouncementsFetcherTest.php
 framework/core/tests/unit/Announcements/ListAnnouncementsControllerTest.php
 framework/core/tests/unit/Locale/TranslatorTest.php
 framework/core/tests/unit/Database/AbstractModelCastsTest.php
+framework/core/tests/unit/Database/TablePrefixLimitTest.php
 framework/core/tests/unit/Database/DatabaseRequirementsTest.php
 framework/core/tests/unit/Log/Context/RepositoryTest.php
 framework/core/tests/unit/Http/RouteCollectionTest.php
@@ -2923,6 +2950,7 @@ framework/core/tests/unit/Formatter/XsltPolyfillTest.php
 framework/core/tests/unit/User/AbstractPolicyTest.php
 framework/core/tests/unit/User/AvatarUploaderTest.php
 framework/core/tests/unit/User/LoginProviderTest.php
+framework/core/tests/unit/Frontend/Compiler/LessCacheIntegrityTest.php
 framework/core/tests/unit/Frontend/Compiler/FileVersionerTest.php
 framework/core/tests/unit/Frontend/Compiler/LessFontUrlTest.php
 framework/core/tests/unit/Frontend/Compiler/RevisionCompilerTest.php
@@ -3131,6 +3159,7 @@ framework/core/src/Extension/Event/Disabling.php
 framework/core/src/Extension/Event/Enabling.php
 framework/core/src/Extension/Exception/ExtensionBootError.php
 framework/core/src/Extension/Exception/DependentExtensionsException.php
+framework/core/src/Extension/Exception/UnreadableManifestException.php
 framework/core/src/Extension/Exception/MissingDependenciesException.php
 framework/core/src/Extension/Exception/CircularDependenciesExceptionHandler.php
 framework/core/src/Extension/Exception/MissingDependenciesExceptionHandler.php
@@ -3160,6 +3189,7 @@ framework/core/src/Database/DatabaseServiceProvider.php
 framework/core/src/Database/Console/ResetCommand.php
 framework/core/src/Database/Console/MigrateCommand.php
 framework/core/src/Database/Console/GenerateDumpCommand.php
+framework/core/src/Database/Exception/TablePrefixTooLong.php
 framework/core/src/Database/Exception/MigrationKeyMissing.php
 framework/core/src/Database/DatabaseMigrationRepository.php
 framework/core/src/Log/Context/Repository.php
@@ -3617,6 +3647,7 @@ framework/core/migrations/2026_05_07_000000_add_avatar_variant_flags_to_users.ph
 framework/core/migrations/2017_04_07_114138_add_is_private_to_discussions.php
 framework/core/migrations/2018_09_15_043337_add_notifications_indices.php
 framework/core/migrations/2022_08_06_000000_change_access_tokens_last_activity_at_to_nullable.php
+framework/core/migrations/2026_08_12_000000_add_title_index_to_discussions.php
 framework/core/migrations/2018_07_21_000100_seed_default_group_permissions.php
 framework/core/migrations/2018_01_18_130500_change_group_permission_add_foreign_keys.php
 framework/core/migrations/sqlite-install.dump
